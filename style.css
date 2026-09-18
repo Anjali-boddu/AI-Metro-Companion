@@ -1,0 +1,756 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap');
+
+:root {
+    --bg: #f4f6f8;
+    --card: #ffffff;
+    --text: #111827;
+    --muted: #6b7280;
+    --border: #e5e7eb;
+    --accent: #1f2937;
+    --accent-dark: #111827;
+    --success: #16803c;
+}
+
+body[data-city="Hyderabad"] {
+    --accent: #c81d3f;
+    --accent-dark: #9f1239;
+}
+
+body[data-city="Bengaluru"] {
+    --accent: #6b3fa0;
+    --accent-dark: #512680;
+}
+
+body[data-city="Delhi"] {
+    --accent: #c58a00;
+    --accent-dark: #946600;
+}
+
+body[data-city="Chennai"] {
+    --accent: #0e8a45;
+    --accent-dark: #086632;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+
+    font-family: 'Inter', Arial, sans-serif;
+    color: var(--text);
+
+    background:
+        linear-gradient(
+            rgba(246, 248, 250, 0.88),
+            rgba(246, 248, 250, 0.88)
+        ),
+        url("background.jpg");
+
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+/* =========================
+   HEADER
+   ========================= */
+
+.topbar {
+    width: 100%;
+    min-height: 68px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 28px;
+
+    background: var(--accent);
+
+    box-shadow:
+        0 4px 15px rgba(0, 0, 0, 0.14);
+
+    position: relative;
+    z-index: 10;
+}
+
+.brand {
+    color: #ffffff;
+
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 19px;
+    font-weight: 700;
+
+    letter-spacing: -0.02em;
+}
+
+.nav-text {
+    color: rgba(255,255,255,0.85);
+    font-size: 12px;
+    font-weight: 500;
+}
+
+/* =========================
+   COMMON CONTAINER
+   ========================= */
+
+.container {
+    width: 92%;
+    max-width: 760px;
+
+    margin: 32px auto 60px;
+
+    position: relative;
+    z-index: 2;
+}
+
+/* =========================
+   HOME HERO
+   ========================= */
+
+.hero {
+    min-height: calc(100vh - 68px);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 45px 20px 80px;
+}
+
+.hero-content {
+    width: 100%;
+    max-width: 560px;
+
+    text-align: center;
+}
+
+.metro-icon {
+    width: 78px;
+    height: 78px;
+
+    margin: 0 auto 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: var(--accent);
+    color: #ffffff;
+
+    border-radius: 24px;
+
+    font-size: 38px;
+
+    box-shadow:
+        0 14px 35px rgba(0,0,0,0.18);
+}
+
+.hero h1 {
+    margin: 0;
+
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 40px;
+    font-weight: 700;
+
+    letter-spacing: -0.04em;
+}
+
+.subtitle {
+    max-width: 470px;
+
+    margin: 13px auto 30px;
+
+    color: var(--muted);
+
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+.hero .card {
+    max-width: 470px;
+    margin: 0 auto;
+
+    text-align: left;
+}
+
+/* =========================
+   CARDS
+   ========================= */
+
+.card {
+    width: 100%;
+
+    background: rgba(255,255,255,0.96);
+
+    border: 1px solid rgba(229,231,235,0.9);
+
+    border-radius: 20px;
+
+    padding: 28px;
+
+    margin-bottom: 20px;
+
+    box-shadow:
+        0 12px 35px rgba(0,0,0,0.10);
+}
+
+.card h2 {
+    margin: 0 0 9px;
+
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 22px;
+}
+
+.card h3 {
+    font-family: 'Space Grotesk', sans-serif;
+}
+
+.card-text {
+    margin: 0 0 24px;
+
+    color: var(--muted);
+
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+/* =========================
+   PAGE TITLE
+   ========================= */
+
+.page-title {
+    margin: 5px 0 22px;
+
+    font-family: 'Space Grotesk', sans-serif;
+
+    font-size: 30px;
+    font-weight: 700;
+
+    letter-spacing: -0.03em;
+}
+
+.city-name {
+    color: var(--accent);
+}
+
+/* =========================
+   BACK LINK
+   ========================= */
+
+.back-link,
+.back-area {
+    display: inline-block;
+
+    margin-bottom: 15px;
+
+    color: var(--muted);
+
+    text-decoration: none;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    transition: 0.2s;
+}
+
+.back-link:hover,
+.back-area:hover {
+    color: var(--accent);
+}
+
+/* =========================
+   LABELS
+   ========================= */
+
+.field-label {
+    display: block;
+
+    margin-bottom: 8px;
+
+    color: #64748b;
+
+    font-size: 11px;
+    font-weight: 700;
+
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+}
+
+/* =========================
+   INPUTS
+   ========================= */
+
+.input,
+select.input,
+.station-select,
+input[type="text"],
+input[type="number"] {
+    width: 100%;
+
+    padding: 14px 15px;
+
+    margin-bottom: 18px;
+
+    border: 1px solid var(--border);
+    border-radius: 12px;
+
+    background: #ffffff;
+
+    color: var(--text);
+
+    font-family: inherit;
+
+    font-size: 15px;
+    font-weight: 500;
+
+    outline: none;
+
+    transition: 0.2s;
+}
+
+.input:focus,
+select.input:focus,
+.station-select:focus,
+input[type="text"]:focus,
+input[type="number"]:focus {
+    border-color: var(--accent);
+
+    box-shadow:
+        0 0 0 3px rgba(0,0,0,0.04);
+}
+
+/* =========================
+   BUTTONS
+   ========================= */
+
+.btn-primary,
+.find-route-btn {
+    width: 100%;
+
+    padding: 14px 18px;
+
+    border: none;
+    border-radius: 12px;
+
+    background: var(--accent);
+
+    color: #ffffff;
+
+    font-family: inherit;
+
+    font-size: 15px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.2s,
+        opacity 0.2s,
+        box-shadow 0.2s;
+}
+
+.btn-primary:hover,
+.find-route-btn:hover {
+    opacity: 0.92;
+
+    transform: translateY(-1px);
+
+    box-shadow:
+        0 7px 18px rgba(0,0,0,0.14);
+}
+
+.btn-primary:active,
+.find-route-btn:active {
+    transform: translateY(0);
+}
+
+/* =========================
+   ROUTE
+   ========================= */
+
+.route-heading {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 10px;
+
+    margin-bottom: 18px;
+
+    font-size: 17px;
+    font-weight: 700;
+}
+
+.route-heading .arrow {
+    color: var(--accent);
+    font-size: 20px;
+}
+
+.route-chips {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    align-items: center;
+
+    gap: 7px;
+}
+
+.chip {
+    padding: 7px 12px;
+
+    border: 1px solid var(--border);
+
+    border-radius: 999px;
+
+    background: #f8fafc;
+
+    color: var(--text);
+
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.chip-interchange {
+    border-color: var(--accent);
+
+    background: rgba(0,0,0,0.025);
+
+    color: var(--accent);
+}
+
+.chip-arrow {
+    color: #9ca3af;
+
+    font-size: 12px;
+}
+
+/* =========================
+   STATISTICS
+   ========================= */
+
+.stat-grid {
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 16px;
+
+    margin: 18px 0 20px;
+}
+
+.stat-card {
+    background: rgba(255,255,255,0.97);
+
+    border: 1px solid var(--border);
+
+    border-radius: 17px;
+
+    padding: 20px;
+
+    box-shadow:
+        0 7px 20px rgba(0,0,0,0.07);
+}
+
+.stat-label {
+    margin-bottom: 7px;
+
+    color: var(--muted);
+
+    font-size: 10px;
+    font-weight: 700;
+
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+}
+
+.stat-value {
+    color: var(--text);
+
+    font-family: 'Space Grotesk', sans-serif;
+
+    font-size: 20px;
+    font-weight: 700;
+}
+
+/* =========================
+   INTERCHANGE
+   ========================= */
+
+.interchange-text {
+    margin: 0 0 5px;
+
+    color: var(--text);
+
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.muted {
+    margin: 0;
+
+    color: var(--muted);
+
+    font-size: 12px;
+}
+
+/* =========================
+   AI ASSISTANT
+   ========================= */
+
+.assistant-card {
+    border-left: 5px solid var(--accent);
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,0.98),
+            rgba(248,250,252,0.95)
+        );
+}
+
+.assistant-card p {
+    margin: 0;
+
+    color: #374151;
+
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+/* =========================
+   NO ROUTE
+   ========================= */
+
+.no-route {
+    margin-top: 0;
+
+    color: #c62828;
+
+    font-family: 'Space Grotesk', sans-serif;
+}
+
+/* =========================
+   FORM DETAILS
+   ========================= */
+
+form p {
+    margin: 10px 0;
+
+    color: #374151;
+
+    font-size: 14px;
+}
+
+form p strong {
+    color: #111827;
+}
+
+/* =========================
+   PAYMENT RADIO BUTTONS
+   ========================= */
+
+input[type="radio"] {
+    accent-color: var(--accent);
+
+    margin-right: 8px;
+
+    transform: scale(1.05);
+}
+
+.payment-option {
+    display: block;
+
+    padding: 13px 15px;
+
+    margin-bottom: 10px;
+
+    border: 1px solid var(--border);
+
+    border-radius: 12px;
+
+    background: #ffffff;
+
+    cursor: pointer;
+}
+
+/* =========================
+   SUCCESS PAGE
+   ========================= */
+
+.success-card {
+    text-align: center;
+}
+
+.success-title {
+    color: var(--success);
+
+    font-family: 'Space Grotesk', sans-serif;
+
+    font-size: 25px;
+}
+
+.ticket-info {
+    text-align: left;
+
+    margin: 20px 0;
+
+    padding: 18px;
+
+    border-radius: 15px;
+
+    background: #f8fafc;
+
+    border: 1px solid var(--border);
+}
+
+.ticket-info p {
+    margin: 9px 0;
+
+    font-size: 14px;
+}
+
+.qr-box {
+    margin: 20px auto;
+
+    padding: 18px;
+
+    width: fit-content;
+
+    background: #ffffff;
+
+    border: 1px solid var(--border);
+
+    border-radius: 18px;
+
+    box-shadow:
+        0 8px 25px rgba(0,0,0,0.08);
+}
+
+.qr-box img {
+    display: block;
+
+    width: 220px;
+    max-width: 100%;
+
+    height: auto;
+}
+
+/* =========================
+   FOOTER
+   ========================= */
+
+.footer {
+    width: 100%;
+
+    padding: 13px;
+
+    text-align: center;
+
+    background: rgba(255,255,255,0.82);
+
+    border-top: 1px solid rgba(229,231,235,0.7);
+
+    color: var(--muted);
+
+    font-size: 11px;
+}
+
+/* =========================
+   RESPONSIVE
+   ========================= */
+
+@media (max-width: 600px) {
+
+    .topbar {
+        min-height: 62px;
+        padding: 0 17px;
+    }
+
+    .brand {
+        font-size: 16px;
+    }
+
+    .nav-text {
+        display: none;
+    }
+
+    .hero {
+        min-height: calc(100vh - 62px);
+
+        padding: 30px 16px 70px;
+    }
+
+    .metro-icon {
+        width: 66px;
+        height: 66px;
+
+        font-size: 31px;
+
+        border-radius: 20px;
+    }
+
+    .hero h1 {
+        font-size: 29px;
+    }
+
+    .subtitle {
+        font-size: 14px;
+    }
+
+    .container {
+        width: 92%;
+
+        margin: 24px auto 45px;
+    }
+
+    .page-title {
+        font-size: 25px;
+    }
+
+    .card {
+        padding: 21px;
+
+        border-radius: 17px;
+    }
+
+    .stat-grid {
+        gap: 11px;
+    }
+
+    .stat-card {
+        padding: 16px;
+    }
+
+    .stat-value {
+        font-size: 17px;
+    }
+
+    .route-heading {
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 380px) {
+
+    .hero h1 {
+        font-size: 26px;
+    }
+
+    .card {
+        padding: 18px;
+    }
+
+    .stat-grid {
+        grid-template-columns: 1fr;
+    }
+}
