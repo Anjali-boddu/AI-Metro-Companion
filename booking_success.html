@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Booking Successful</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="topbar">
+    <span class="brand">🚇 AI Metro Companion Assistant</span>
+</div>
+
+<div class="container">
+
+    <div class="card">
+
+        <h2 style="color:green;">✅ Ticket Booked Successfully</h2>
+
+        <hr>
+
+        <p><strong>Booking ID:</strong> {{ booking_id }}</p>
+
+        <p><strong>Passenger Name:</strong> {{ name }}</p>
+
+        <p><strong>From:</strong> {{ source }}</p>
+
+        <p><strong>To:</strong> {{ destination }}</p>
+
+        <p><strong>Number of Tickets:</strong> {{ tickets }}</p>
+
+        <p><strong>Total Fare:</strong> ₹{{ total_fare }}</p>
+       
+        <hr>
+
+    <h3>Your Metro Ticket QR Code</h3>
+
+    <img src="{{ url_for('static', filename='qr_codes/booking_' ~ booking_id ~ '.png') }}"
+     width="220"
+     alt="Metro Ticket QR Code">
+
+        <br>
+
+        <h3 style="color:#0E8A45;">
+            Have a Safe Journey 🚇
+        </h3>
+
+        <a href="/">
+            <button class="btn-primary">
+                Back to Home
+            </button>
+        </a>
+
+    </div>
+
+</div>
+
+</body>
+</html>

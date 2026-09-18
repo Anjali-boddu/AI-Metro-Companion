@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Route Result | AI Metro Companion</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="topbar">
+
+        <div class="brand">
+            🚇 <span>AI Metro Companion</span>
+        </div>
+
+        <div class="nav-text">
+            Route Details
+        </div>
+
+    </header>
+
+
+    <!-- Main Content -->
+    <main class="container">
+
+        {% if path %}
+
+        <!-- Back -->
+        <a href="/" class="back-link">
+            ← Search Again
+        </a>
+
+
+        <!-- Route Summary -->
+        <div class="card">
+
+            <div class="field-label">
+                Your Metro Route
+            </div>
+
+            <div class="route-heading">
+
+                <span>{{ source }}</span>
+
+                <span class="arrow">→</span>
+
+                <span>{{ destination }}</span>
+
+            </div>
+
+
+            <!-- Route Stations -->
+            <div class="route-chips">
+
+                {% for station in path %}
+
+                    <span class="chip
+                        {% if interchange and station in interchange %}
+                            chip-interchange
+                        {% endif %}">
+
+                        {{ station }}
+
+                    </span>
+
+                    {% if not loop.last %}
+
+                        <span class="chip-arrow">
+                            →
+                        </span>
+
+                    {% endif %}
+
+                {% endfor %}
+
+            </div>
+
+        </div>
+
+
+        <!-- Journey Statistics -->
+        <div class="stat-grid">
+
+            <div class="stat-card">
+
+                <div class="stat-label">
+                    Total Fare
+                </div>
+
+                <div class="stat-value">
+                    ₹{{ total_fare }}
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-label">
+                    Travel Time
+                </div>
+
+                <div class="stat-value">
+                    {{ total_time }} min
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-label">
+                    Distance
+                </div>
+
+                <div class="stat-value">
+                    {{ total_distance }} km
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-label">
+                    Stations
+                </div>
+
+                <div class="stat-value">
+                    {{ total_stations }}
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Interchange -->
+        <div class="card">
+
+            <div class="field-label">
+                Interchange
+            </div>
+
+            {% if interchange %}
+
+                <p class="interchange-text">
+                    🔄 {{ interchange | join(', ') }}
+                </p>
+
+                <p class="muted">
+                    Change metro line at the interchange station.
+                </p>
+
+            {% else %}
+
+                <p class="interchange-text">
+                    ✓ No interchange required
+                </p>
+
+                <p class="muted">
+                    Direct journey on the same metro line.
+                </p>
+
+            {% endif %}
+
+        </div>
+
+
+        <!-- Metro Timings -->
+        <div class="card">
+
+            <div class="field-label">
+                Metro Timings
+            </div>
+
+            <div class="stat-grid">
+
+                <div class="stat-card">
+
+                    <div class="stat-label">
+                        First Metro
+                    </div>
+
+                    <div class="stat-value">
+                        6:00 AM
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-label">
+                        Last Metro
+                    </div>
+
+                    <div class="stat-value">
+                        11:00 PM
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- AI Assistant -->
+        <div class="card assistant-card">
+
+            <div class="field-label">
+                🤖 AI Metro Assistant
+            </div>
+
+            <p>
+                {{ suggestion }}
+            </p>
+
+        </div>
+
+
+        <!-- Book Ticket -->
+        <div class="card">
+
+            <div class="field-label">
+                Ticket Booking
+            </div>
+
+            <h2>
+                Ready to travel?
+            </h2>
+
+            <p class="card-text">
+                Book your metro ticket for this journey.
+            </p>
+
+
+            <form action="/ticket" method="POST">
+
+                <input
+                    type="hidden"
+                    name="source"
+                    value="{{ source }}"
+                >
+
+                <input
+                    type="hidden"
+                    name="destination"
+                    value="{{ destination }}"
+                >
+
+                <input
+                    type="hidden"
+                    name="fare"
+                    value="{{ total_fare }}"
+                >
+
+
+                <button
+                    type="submit"
+                    class="btn-primary">
+
+                    🎫 Book Metro Ticket →
+
+                </button>
+
+            </form>
+
+        </div>
+
+
+        {% else %}
+
+
+        <!-- No Route -->
+        <div class="card">
+
+            <h2 class="no-route">
+                No Route Found
+            </h2>
+
+            <p class="card-text">
+                We couldn't find a route between the selected stations.
+                Please try another combination.
+            </p>
+
+            <a href="/" class="back-link">
+                ← Search Again
+            </a>
+
+        </div>
+
+
+        {% endif %}
+
+    </main>
+
+
+    <!-- Footer -->
+    <footer class="footer">
+
+        <p>
+            © 2026 AI Metro Companion Assistant
+        </p>
+
+    </footer>
+
+</body>
+
+</html>

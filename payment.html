@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Metro Payment</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="topbar">
+    <span class="brand">🚇 AI Metro Companion Assistant</span>
+</div>
+
+<div class="container">
+
+<div class="card">
+
+<h2>💳 Payment</h2>
+
+<p><strong>Passenger:</strong> {{ name }}</p>
+<p><strong>From:</strong> {{ source }}</p>
+<p><strong>To:</strong> {{ destination }}</p>
+<p><strong>Total Fare:</strong> ₹{{ total_fare }}</p>
+
+<form action="/confirm_booking" method="POST">
+
+<input type="hidden" name="name" value="{{ name }}">
+<input type="hidden" name="source" value="{{ source }}">
+<input type="hidden" name="destination" value="{{ destination }}">
+<input type="hidden" name="tickets" value="{{ tickets }}">
+<input type="hidden" name="fare" value="{{ fare }}">
+
+<label>Select Payment Method</label>
+
+<input type="radio" name="payment" value="UPI" required> UPI<br>
+<input type="radio" name="payment" value="Debit Card"> Debit Card<br>
+<input type="radio" name="payment" value="Credit Card"> Credit Card<br>
+<input type="radio" name="payment" value="Net Banking"> Net Banking<br><br>
+
+<button class="btn-primary">
+💳 Pay Now
+</button>
+
+</form>
+
+</div>
+
+</div>
+
+</body>
+</html>

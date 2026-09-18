@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AI Metro Companion Assistant</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="topbar">
+        <div class="brand">
+            🚇 <span>AI Metro Companion</span>
+        </div>
+
+        <div class="nav-text">
+            Smart • Fast • Simple
+        </div>
+    </header>
+
+
+    <!-- Main Section -->
+    <main class="hero">
+
+        <div class="hero-content">
+
+            <div class="metro-icon">
+                🚇
+            </div>
+
+            <h1>AI Metro Companion</h1>
+
+            <p class="subtitle">
+                Your smart assistant for metro routes, fares and ticket booking.
+            </p>
+
+
+            <!-- City Selection Card -->
+            <div class="card">
+
+                <h2>Plan Your Metro Journey</h2>
+
+                <p class="card-text">
+                    Select your city to find metro routes and book your journey.
+                </p>
+
+                <form action="/stations" method="POST">
+
+                    <label class="field-label">
+                        Select City
+                    </label>
+
+                    <select name="city" class="input" required>
+
+                        <option value="">
+                            -- Select City --
+                        </option>
+
+                        <option value="Hyderabad">
+                            Hyderabad
+                        </option>
+
+                        <option value="Bengaluru">
+                            Bengaluru
+                        </option>
+
+                        <option value="Delhi">
+                            Delhi
+                        </option>
+
+                        <option value="Chennai">
+                            Chennai
+                        </option>
+
+                    </select>
+
+                    <button type="submit" class="btn-primary">
+                        Continue →
+                    </button>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>
+            © 2026 AI Metro Companion Assistant
+        </p>
+    </footer>
+
+</body>
+</html>

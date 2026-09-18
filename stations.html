@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{{ city }} Metro | AI Metro Companion</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body data-city="{{ city }}">
+
+    <!-- HEADER -->
+    <header class="topbar">
+
+        <div class="brand">
+            🚇 AI Metro Companion
+        </div>
+
+        <div class="nav-text">
+            {{ city }} Metro
+        </div>
+
+    </header>
+
+
+    <!-- MAIN CONTENT -->
+    <main class="container">
+
+        <a href="/" class="back-link">
+            ← Back to Home
+        </a>
+
+
+        <h1 class="page-title">
+            Plan Your <span class="city-name">{{ city }}</span> Metro Journey
+        </h1>
+
+
+        <!-- STATION SELECTION CARD -->
+        <div class="card">
+
+            <h2>
+                Select Stations
+            </h2>
+
+            <p class="card-text">
+                Choose your source and destination stations to find the best metro route.
+            </p>
+
+
+            <form action="/route" method="POST">
+
+                <!-- CITY -->
+                <input
+                    type="hidden"
+                    name="city"
+                    value="{{ city }}"
+                >
+
+
+                <!-- SOURCE -->
+                <label
+                    for="source"
+                    class="field-label">
+
+                    Source Station
+
+                </label>
+
+                <select
+                    id="source"
+                    name="source"
+                    class="station-select"
+                    required>
+
+                    <option value="">
+                        Select source station
+                    </option>
+
+                    {% for s in stations %}
+
+                        <option value="{{ s.station_name }}">
+                            {{ s.station_name }}
+                        </option>
+
+                    {% endfor %}
+
+                </select>
+
+
+                <!-- DESTINATION -->
+                <label
+                    for="destination"
+                    class="field-label">
+
+                    Destination Station
+
+                </label>
+
+                <select
+                    id="destination"
+                    name="destination"
+                    class="station-select"
+                    required>
+
+                    <option value="">
+                        Select destination station
+                    </option>
+
+                    {% for s in stations %}
+
+                        <option value="{{ s.station_name }}">
+                            {{ s.station_name }}
+                        </option>
+
+                    {% endfor %}
+
+                </select>
+
+
+                <!-- FIND ROUTE -->
+                <button
+                    type="submit"
+                    class="find-route-btn">
+
+                    Find Metro Route →
+
+                </button>
+
+            </form>
+
+        </div>
+
+
+        <!-- INFO CARD -->
+        <div class="card">
+
+            <div class="field-label">
+                Journey Information
+            </div>
+
+            <p class="muted">
+                Select any two stations to calculate route,
+                fare, distance and estimated travel time.
+            </p>
+
+        </div>
+
+    </main>
+
+
+    <!-- FOOTER -->
+    <footer class="footer">
+
+        <p>
+            © 2026 AI Metro Companion Assistant
+        </p>
+
+    </footer>
+
+</body>
+
+</html>

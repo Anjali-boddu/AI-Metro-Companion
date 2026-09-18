@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Book Metro Ticket | AI Metro Companion</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="topbar">
+
+        <div class="brand">
+            🚇 <span>AI Metro Companion</span>
+        </div>
+
+        <div class="nav-text">
+            Ticket Booking
+        </div>
+
+    </header>
+
+
+    <!-- Main Content -->
+    <main class="container">
+
+        <a href="/" class="back-link">
+            ← Back to Home
+        </a>
+
+
+        <h1 class="page-title">
+            Book Your <span class="city-name">Metro Ticket</span>
+        </h1>
+
+
+        <!-- Booking Card -->
+        <div class="card">
+
+            <div class="field-label">
+                Journey Details
+            </div>
+
+            <h2>
+                🎫 Metro Ticket Booking
+            </h2>
+
+            <p class="card-text">
+                Enter passenger details and select the number of tickets
+                for your journey.
+            </p>
+
+
+            <!-- Journey Information -->
+            <div class="ticket-info">
+
+                <p>
+                    <strong>From:</strong>
+                    {{ source }}
+                </p>
+
+                <p>
+                    <strong>To:</strong>
+                    {{ destination }}
+                </p>
+
+                <p>
+                    <strong>Fare per Ticket:</strong>
+                    ₹{{ fare }}
+                </p>
+
+            </div>
+
+
+            <!-- Booking Form -->
+            <form action="/payment" method="POST">
+
+                <!-- Hidden Journey Details -->
+                <input
+                    type="hidden"
+                    name="source"
+                    value="{{ source }}"
+                >
+
+                <input
+                    type="hidden"
+                    name="destination"
+                    value="{{ destination }}"
+                >
+
+                <input
+                    type="hidden"
+                    name="fare"
+                    value="{{ fare }}"
+                >
+
+                <input
+                    type="hidden"
+                    name="total_fare"
+                    value="{{ fare }}"
+                >
+
+
+                <!-- Passenger Name -->
+                <label
+                    for="name"
+                    class="field-label">
+
+                    Passenger Name
+
+                </label>
+
+                <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    class="input"
+                    placeholder="Enter passenger name"
+                    required
+                >
+
+
+                <!-- Number of Tickets -->
+                <label
+                    for="tickets"
+                    class="field-label">
+
+                    Number of Tickets
+
+                </label>
+
+                <input
+                    type="number"
+                    id="tickets"
+                    name="tickets"
+                    class="input"
+                    min="1"
+                    max="10"
+                    value="1"
+                    required
+                >
+
+
+                <!-- Continue -->
+                <button
+                    type="submit"
+                    class="btn-primary">
+
+                    Continue to Payment →
+
+                </button>
+
+            </form>
+
+        </div>
+
+    </main>
+
+
+    <!-- Footer -->
+    <footer class="footer">
+
+        <p>
+            © 2026 AI Metro Companion Assistant
+        </p>
+
+    </footer>
+
+</body>
+
+</html>
